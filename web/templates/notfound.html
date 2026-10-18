@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Not Found — Espalier</title>
+<meta name="color-scheme" content="light dark">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="{{asset "/static/images/icon-64.png"}}">
+<link rel="stylesheet" href="{{asset "/static/site.css"}}">
+</head>
+<body>
+<main class="missing">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="{{asset "/static/images/icon-dark-128.webp"}} 1x, {{asset "/static/images/icon-dark-256.webp"}} 2x">
+    <img src="{{asset "/static/images/icon-light-128.webp"}}" srcset="{{asset "/static/images/icon-light-128.webp"}} 1x, {{asset "/static/images/icon-light-256.webp"}} 2x" alt="" width="88" height="88">
+  </picture>
+  <h1>Page not found.</h1>
+  <p>There's nothing at this address.</p>
+  <a class="button button-primary" href="/">Go to Espalier</a>
+</main>
+</body>
+</html>

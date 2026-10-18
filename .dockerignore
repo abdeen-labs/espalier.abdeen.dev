@@ -1,0 +1,4 @@
+.git
+scripts
+*_test.go
+README.md

@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Espalier — A Mac Git client</title>
+<meta name="description" content="A free, open-source Mac Git client. Read branches clearly, stage individual lines, clean up commits before you push, and handle GitHub pull requests.">
+<link rel="canonical" href="{{.SiteURL}}/">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f9fc">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#090f1b">
+<link rel="icon" type="image/png" href="{{asset "/static/images/icon-64.png"}}">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Espalier">
+<meta property="og:title" content="Espalier — A Mac Git client">
+<meta property="og:description" content="A native Mac Git client for reading branches, staging individual lines, and cleaning up commits. Free and open source.">
+<meta property="og:url" content="{{.SiteURL}}/">
+<meta property="og:image" content="{{.SiteURL}}{{asset "/static/images/og.jpg"}}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Espalier's History view showing a color-coded commit graph next to a file diff.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="{{asset "/static/site.css"}}">
+</head>
+<body>
+{{template "icons"}}
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="#top" aria-label="Espalier, back to top">
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="{{asset "/static/images/icon-dark-128.webp"}}">
+        <img src="{{asset "/static/images/icon-light-128.webp"}}" alt="" width="30" height="30">
+      </picture>
+      <span>Espalier</span>
+    </a>
+    <nav aria-label="Main">
+      <a class="nav-link" href="#features">Features</a>
+      <a class="nav-link" href="#privacy">Privacy</a>
+      <a class="nav-link nav-icon" href="https://github.com/abdeen-labs/espalier" aria-label="Espalier on GitHub" title="Espalier on GitHub"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></a>
+      <a class="button button-small button-primary" href="{{.DownloadURL}}">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap hero-text">
+    <picture class="hero-icon">
+      <source media="(prefers-color-scheme: dark)" srcset="{{asset "/static/images/icon-dark-256.webp"}} 1x, {{asset "/static/images/icon-dark-512.webp"}} 2x">
+      <img src="{{asset "/static/images/icon-light-256.webp"}}" srcset="{{asset "/static/images/icon-light-256.webp"}} 1x, {{asset "/static/images/icon-light-512.webp"}} 2x" alt="" width="128" height="128">
+    </picture>
+    <h1 id="hero-title">Espalier</h1>
+    <p class="lede">A native Git client for the Mac. Keep track of your branches, stage individual lines, and clean up your commits before you push.</p>
+    <div class="actions">
+      <a class="button button-primary button-large" href="{{.DownloadURL}}">
+        <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+        Download for Mac
+      </a>
+      <a class="button button-secondary button-large" href="https://github.com/abdeen-labs/espalier">View Source</a>
+    </div>
+    <p class="release">{{if .HasRelease}}Version {{.Version}}{{with .Size}} · {{.}}{{end}} · {{end}}macOS {{.MacOS}}+ on Apple silicon · Free and open source</p>
+  </div>
+  <div class="wrap wrap-wide">
+    <figure class="window hero-window">
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="{{srcset "classic-dark" 1440 2880}}" sizes="(min-width: 1320px) 1280px, calc(100vw - 32px)">
+        <img src="{{asset "/static/images/classic-light-1440.webp"}}" srcset="{{srcset "classic-light" 1440 2880}}" sizes="(min-width: 1320px) 1280px, calc(100vw - 32px)" width="1440" height="900" fetchpriority="high" alt="Espalier's History view for a project called Harbor, showing a color-coded commit graph beside a Swift diff.">
+      </picture>
+    </figure>
+  </div>
+</section>
+
+<section id="features" class="feature" aria-labelledby="history-title">
+  <div class="wrap split">
+    <div class="split-text reveal">
+      <h2 id="history-title">A clear view of your repository.</h2>
+      <p>In Graph view, each branch gets its own color so you can actually follow merges and parallel work. Switch to Simple when you just want a flat list of commits on your current branch.</p>
+      <ul class="points">
+        <li><svg class="icon" aria-hidden="true"><use href="#i-git-branch"/></svg>Graph or Simple view for one branch or the whole repo</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-eye"/></svg>Commit Info for parents, branches, co-authors, and trailers</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-git-merge"/></svg>Branch comparisons showing which commits are ahead or behind</li>
+      </ul>
+    </div>
+    <figure class="card graph-card reveal">
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="{{srcset "graph-dark" 420 840}}" sizes="(min-width: 960px) 420px, calc(100vw - 32px)">
+        <img src="{{asset "/static/images/graph-light-420.webp"}}" srcset="{{srcset "graph-light" 420 840}}" sizes="(min-width: 960px) 420px, calc(100vw - 32px)" width="420" height="535" loading="lazy" decoding="async" alt="A commit graph with main in blue (tagged v1.2 and v1.3), a green widget branch merged in, and an open teal charts branch.">
+      </picture>
+    </figure>
+  </div>
+</section>
+
+<section class="feature" aria-labelledby="changes-title">
+  <div class="wrap">
+    <div class="intro reveal">
+      <h2 id="changes-title">Stage only what belongs in the commit.</h2>
+      <p>Check off whole files, individual hunks, or single lines directly in the diff, and discard leftover edits you don't want to keep.</p>
+    </div>
+  </div>
+  <div class="wrap wrap-wide">
+    <figure class="window reveal">
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="{{srcset "changes-dark" 1440 2880}}" sizes="(min-width: 1320px) 1280px, calc(100vw - 32px)">
+        <img src="{{asset "/static/images/changes-light-1440.webp"}}" srcset="{{srcset "changes-light" 1440 2880}}" sizes="(min-width: 1320px) 1280px, calc(100vw - 32px)" width="1440" height="900" loading="lazy" decoding="async" alt="Espalier's Changes view with three modified files, specific lines checked off in a Swift diff, and a commit message ready to commit.">
+      </picture>
+    </figure>
+  </div>
+  <div class="wrap">
+    <ul class="facts reveal">
+      <li><strong>Line-by-line staging</strong><span>Check off the exact lines or hunks you want to commit, and discard the rest.</span></li>
+      <li><strong>Unified or split diffs</strong><span>Hide whitespace changes, wrap long lines, or expand context around an edit.</span></li>
+      <li><strong>Image diffs</strong><span>Compare images using 2-Up, Swipe, Onion Skin, or Difference on a transparency checkerboard.</span></li>
+      <li><strong>Quick fixes</strong><span>Add co-authors, amend your last commit, or undo it while keeping your working changes.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="feature" aria-labelledby="rework-title">
+  <div class="wrap split split-flip">
+    <div class="split-text reveal">
+      <h2 id="rework-title">Clean up commits without interactive rebase.</h2>
+      <p>Tidy your local branch before pushing by dragging commits where they need to go. Espalier checks for conflicts ahead of time, shows progress as it works, and lets you undo if you change your mind.</p>
+    </div>
+    <ol class="moves reveal" aria-label="Ways to rework commits">
+      <li><span class="move-name">Squash</span><span class="move-how">Drag one commit onto another to combine them.</span></li>
+      <li><span class="move-name">Reorder</span><span class="move-how">Drag a commit between two others to change the sequence.</span></li>
+      <li><span class="move-name">Cherry-pick</span><span class="move-how">Drag a commit onto any branch in the sidebar.</span></li>
+      <li><span class="move-name">Merge or rebase</span><span class="move-how">Press <kbd>⇧⌘M</kbd> to merge, squash and merge, or rebase with a conflict check first.</span></li>
+      <li><span class="move-name">Undo</span><span class="move-how">Press <kbd>⌘Z</kbd> to revert a squash, reorder, or cherry-pick.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="feature" aria-label="GitHub and AI">
+  <div class="wrap pair">
+    <article class="panel reveal">
+      <svg class="panel-icon" aria-hidden="true"><use href="#i-git-fork"/></svg>
+      <h2 class="h3">GitHub pull requests in the sidebar.</h2>
+      <p>Sign in to GitHub.com or GitHub Enterprise to keep open pull requests right next to your branches. You can check them out, watch CI checks or re-run failed ones, and get notified when a review comes in.</p>
+      <p class="aside">If GitHub push protection blocks a push over a leaked secret, Espalier shows you what triggered it and where.</p>
+    </article>
+    <article class="panel reveal">
+      <svg class="panel-icon" aria-hidden="true"><use href="#i-sparks"/></svg>
+      <h2 class="h3">Optional AI, using your own keys.</h2>
+      <p>If you want help drafting commit messages or resolving merge conflicts, connect OpenAI, Anthropic, Azure OpenAI, or a local model on your Mac. Keys stay in your Keychain, and Espalier always asks before talking to a new provider.</p>
+      <p class="aside">There is no Espalier AI service—if you don't add a provider, nothing is ever sent.</p>
+    </article>
+  </div>
+</section>
+
+<section class="feature" aria-labelledby="themes-title">
+  <div class="wrap">
+    <div class="intro reveal">
+      <h2 id="themes-title">Built to fit your setup.</h2>
+      <p>Pick from four themes and several color palettes, adjust background tints, set separate fonts for the interface and code, and run in light or dark mode.</p>
+    </div>
+  </div>
+  <div class="themes">
+    <input class="theme-choice" type="radio" name="theme" id="theme-classic" aria-label="Classic" checked>
+    <input class="theme-choice" type="radio" name="theme" id="theme-orchard" aria-label="Orchard">
+    <input class="theme-choice" type="radio" name="theme" id="theme-islands" aria-label="Islands">
+    <input class="theme-choice" type="radio" name="theme" id="theme-pop" aria-label="Pop">
+    <div class="wrap">
+      <div class="theme-tabs" aria-hidden="true">
+        <label for="theme-classic"><span class="swatch swatch-classic"></span>Classic</label>
+        <label for="theme-orchard"><span class="swatch swatch-orchard"></span>Orchard</label>
+        <label for="theme-islands"><span class="swatch swatch-islands"></span>Islands</label>
+        <label for="theme-pop"><span class="swatch swatch-pop"></span>Pop</label>
+      </div>
+    </div>
+    <div class="wrap wrap-wide theme-shots">
+      {{range $theme := list "classic" "orchard" "islands" "pop"}}
+      <figure class="theme-shot theme-shot-{{$theme}}">
+        <div class="window">
+          <picture>
+            <source media="(prefers-color-scheme: dark)" srcset="{{srcset (print $theme "-dark") 1440 2880}}" sizes="(min-width: 1320px) 1280px, calc(100vw - 32px)">
+            <img src="{{asset (print "/static/images/" $theme "-light-1440.webp")}}" srcset="{{srcset (print $theme "-light") 1440 2880}}" sizes="(min-width: 1320px) 1280px, calc(100vw - 32px)" width="1440" height="900" loading="lazy" decoding="async" alt="{{themeAlt $theme}}">
+          </picture>
+        </div>
+        <figcaption>{{themeCaption $theme}}</figcaption>
+      </figure>
+      {{end}}
+    </div>
+  </div>
+</section>
+
+<section class="feature" aria-labelledby="more-title">
+  <div class="wrap">
+    <h2 id="more-title" class="center reveal">Everything else you'd expect</h2>
+    <ul class="grid">
+      <li class="reveal"><svg class="icon" aria-hidden="true"><use href="#i-git-merge"/></svg><h3>Git included</h3><p>Ships with Git 2.53, Git LFS, and Git Credential Manager built in, so there's nothing extra to set up.</p></li>
+      <li class="reveal"><svg class="icon" aria-hidden="true"><use href="#i-archive"/></svg><h3>Worktrees and stashes</h3><p>Check out any branch or pull request into its own worktree, or stash uncommitted work with ⇧⌘S.</p></li>
+      <li class="reveal"><svg class="icon" aria-hidden="true"><use href="#i-shield-check"/></svg><h3>Commit signing</h3><p>Uses your existing GPG or SSH setup to sign commits, with clear error messages if signing fails.</p></li>
+      <li class="reveal"><svg class="icon" aria-hidden="true"><use href="#i-code-brackets"/></svg><h3>Editor and terminal handoff</h3><p>Jump straight to Xcode, VS Code, Zed, Cursor, JetBrains IDEs, Terminal, iTerm2, Ghostty, Warp, and dozens more.</p></li>
+      <li class="reveal"><svg class="icon" aria-hidden="true"><use href="#i-terminal"/></svg><h3>Command line tool</h3><p>Run <code>espalier open</code> or <code>espalier clone owner/name</code> to launch repos directly from your shell.</p></li>
+      <li class="reveal"><svg class="icon" aria-hidden="true"><use href="#i-key-command"/></svg><h3>Full keyboard control</h3><p>Every action lives in the menu bar with shortcuts for common tasks, including ⇧F10 to open context menus on any row.</p></li>
+      <li class="reveal"><svg class="icon" aria-hidden="true"><use href="#i-accessibility"/></svg><h3>VoiceOver and accessibility</h3><p>Full VoiceOver support for the commit graph and diffs—with rotors for branches, tags, and changes—plus Reduce Motion support.</p></li>
+      <li class="reveal"><svg class="icon" aria-hidden="true"><use href="#i-refresh-double"/></svg><h3>Automatic updates</h3><p>Checks for updates daily and verifies cryptographic signatures before installing.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section id="privacy" class="feature" aria-labelledby="privacy-title">
+  <div class="wrap split">
+    <div class="split-text reveal">
+      <h2 id="privacy-title">No accounts. No telemetry.</h2>
+      <p>Espalier doesn't require an account and doesn't collect analytics, telemetry, or crash reports. Your tokens, API keys, and saved passwords stay in your Mac's login Keychain.</p>
+    </div>
+    <div class="card hosts reveal">
+      <h3>Network connections are limited to</h3>
+      <ul>
+        <li><strong>Your Git remotes</strong><span>When you fetch, pull, or push, plus background fetches to keep your status up to date.</span></li>
+        <li><strong>GitHub</strong><span>After you sign in, to load pull requests, check runs, and notifications.</span></li>
+        <li><strong>GitHub's avatar service</strong><span>To load profile pictures, which sends the email addresses of commit authors you view.</span></li>
+        <li><strong>AI providers you configure</strong><span>Only after you explicitly approve the first request to each provider.</span></li>
+        <li><strong><code>updates.abdeen.industries</code></strong><span>Once a day to check for and download signed app updates.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="feature" aria-labelledby="source-title">
+  <div class="wrap">
+    <div class="source reveal">
+      <h2 id="source-title">Free and open source.</h2>
+      <p>An espalier is a tree trained to grow flat along a trellis, with its branches laid out so every one is easy to reach. The app started as a native Swift port of GitHub Desktop and still shares much of its underlying Git plumbing and test suite, built out into a dedicated Mac interface. It's free under the MIT license. Espalier is an independent project, not affiliated with or endorsed by GitHub.</p>
+      <div class="actions">
+        <a class="button button-secondary" href="https://github.com/abdeen-labs/espalier">
+          View Source
+        </a>
+        <a class="button button-quiet" href="https://github.com/abdeen-labs/espalier/issues/new/choose">
+          Report an Issue
+          <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="download" aria-labelledby="download-title">
+  <div class="wrap download-inner reveal">
+    <picture class="download-icon">
+      <source media="(prefers-color-scheme: dark)" srcset="{{asset "/static/images/icon-dark-128.webp"}} 1x, {{asset "/static/images/icon-dark-256.webp"}} 2x">
+      <img src="{{asset "/static/images/icon-light-128.webp"}}" srcset="{{asset "/static/images/icon-light-128.webp"}} 1x, {{asset "/static/images/icon-light-256.webp"}} 2x" alt="" width="88" height="88" loading="lazy">
+    </picture>
+    <h2 id="download-title">Download Espalier</h2>
+    <p class="release">{{if .HasRelease}}Version {{.Version}}{{with .Published}}, {{.}}{{end}}{{with .Size}} · {{.}}{{end}}{{else}}The latest version{{end}}</p>
+    <a class="button button-primary button-large" href="{{.DownloadURL}}">
+      <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+      Download for Mac
+    </a>
+    <p class="requires">Requires macOS {{.MacOS}} or later on Apple silicon. Updates automatically.</p>
+  </div>
+</section>
+
+</main>
+
+{{template "footer" .}}
+</body>
+</html>
