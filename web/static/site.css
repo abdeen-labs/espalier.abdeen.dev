@@ -782,24 +782,25 @@ kbd {
   outline-offset: 2px;
 }
 
-/* The four screenshots share one cell and stay laid out when hidden, so each
-   loads as the section nears the screen, before it's picked. */
-.theme-shots {
+/* One window holds the four screenshots, stacked, and one caption holds
+   their captions. Hidden ones stay laid out, so each screenshot loads as the
+   section nears the screen, before it's picked. */
+.theme-window,
+.theme-captions {
   display: grid;
+}
+
+.theme-captions {
+  margin-top: 22px;
+  color: var(--ink-3);
+  font-size: 15px;
+  text-align: center;
 }
 
 .theme-shot {
   grid-area: 1 / 1;
   opacity: 0;
   visibility: hidden;
-}
-
-.theme-shot figcaption {
-  margin-top: 22px;
-  opacity: 0;
-  color: var(--ink-3);
-  font-size: 15px;
-  text-align: center;
 }
 
 #theme-classic:checked ~ .theme-shots .theme-shot-classic,
@@ -809,13 +810,6 @@ kbd {
   z-index: 1;
   opacity: 1;
   visibility: visible;
-}
-
-#theme-classic:checked ~ .theme-shots .theme-shot-classic figcaption,
-#theme-orchard:checked ~ .theme-shots .theme-shot-orchard figcaption,
-#theme-islands:checked ~ .theme-shots .theme-shot-islands figcaption,
-#theme-pop:checked ~ .theme-shots .theme-shot-pop figcaption {
-  opacity: 1;
 }
 
 /* Everything else: a grid of cells with hairlines between them. */
@@ -1084,22 +1078,18 @@ kbd {
 }
 
 /* Motion: sections rise into place as they scroll in; a picked theme's
-   screenshot fades in over the last one, which hides once it's covered.
-   None of it with Reduce Motion. */
+   screenshot fades in over the last one, which hides once it's covered, and
+   its caption fades in as the last one goes. None of it with Reduce Motion. */
 
 @media (prefers-reduced-motion: no-preference) {
-  .theme-shot {
+  .theme-window .theme-shot {
     transition: opacity 0s 0.3s, visibility 0s 0.3s;
   }
 
   #theme-classic:checked ~ .theme-shots .theme-shot-classic,
   #theme-orchard:checked ~ .theme-shots .theme-shot-orchard,
   #theme-islands:checked ~ .theme-shots .theme-shot-islands,
-  #theme-pop:checked ~ .theme-shots .theme-shot-pop,
-  #theme-classic:checked ~ .theme-shots .theme-shot-classic figcaption,
-  #theme-orchard:checked ~ .theme-shots .theme-shot-orchard figcaption,
-  #theme-islands:checked ~ .theme-shots .theme-shot-islands figcaption,
-  #theme-pop:checked ~ .theme-shots .theme-shot-pop figcaption {
+  #theme-pop:checked ~ .theme-shots .theme-shot-pop {
     transition: opacity 0.3s var(--ease);
   }
 

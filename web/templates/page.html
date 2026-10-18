@@ -172,19 +172,21 @@
         <label for="theme-pop"><span class="swatch swatch-pop"></span>Pop</label>
       </div>
     </div>
-    <div class="wrap wrap-wide theme-shots">
-      {{range $theme := list "classic" "orchard" "islands" "pop"}}
-      <figure class="theme-shot theme-shot-{{$theme}}">
-        <div class="window">
-          <picture>
-            <source media="(prefers-color-scheme: dark)" srcset="{{srcset (print $theme "-dark") 1440 2880}}" sizes="(min-width: 1320px) 1280px, calc(100vw - 32px)">
-            <img src="{{asset (print "/static/images/" $theme "-light-1440.webp")}}" srcset="{{srcset (print $theme "-light") 1440 2880}}" sizes="(min-width: 1320px) 1280px, calc(100vw - 32px)" width="1440" height="900" loading="lazy" decoding="async" alt="{{themeAlt $theme}}">
-          </picture>
-        </div>
-        <figcaption>{{themeCaption $theme}}</figcaption>
-      </figure>
-      {{end}}
-    </div>
+    <figure class="wrap wrap-wide theme-shots">
+      <div class="window theme-window">
+        {{range $theme := list "classic" "orchard" "islands" "pop"}}
+        <picture class="theme-shot theme-shot-{{$theme}}">
+          <source media="(prefers-color-scheme: dark)" srcset="{{srcset (print $theme "-dark") 1440 2880}}" sizes="(min-width: 1320px) 1280px, calc(100vw - 32px)">
+          <img src="{{asset (print "/static/images/" $theme "-light-1440.webp")}}" srcset="{{srcset (print $theme "-light") 1440 2880}}" sizes="(min-width: 1320px) 1280px, calc(100vw - 32px)" width="1440" height="900" loading="lazy" decoding="async" alt="{{themeAlt $theme}}">
+        </picture>
+        {{end}}
+      </div>
+      <figcaption class="theme-captions">
+        {{range $theme := list "classic" "orchard" "islands" "pop"}}
+        <span class="theme-shot theme-shot-{{$theme}}">{{themeCaption $theme}}</span>
+        {{end}}
+      </figcaption>
+    </figure>
   </div>
 </section>
 
