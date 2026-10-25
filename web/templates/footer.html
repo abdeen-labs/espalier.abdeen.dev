@@ -1,7 +1,7 @@
 {{define "footer"}}
 <footer class="foot">
   <div class="wrap foot-inner">
-    <a class="lockup" href="https://abdeen.dev">
+    <a class="lockup" href="https://abdeen.dev" data-event="labs" data-event-location="footer">
       <picture>
         <source media="(prefers-color-scheme: dark)" srcset="{{asset "/static/brand/lockup-dark.svg"}}">
         <img src="{{asset "/static/brand/lockup-light.svg"}}" alt="Abdeen Labs" width="164" height="32">
@@ -9,9 +9,9 @@
     </a>
     <p class="foot-note">Made by Abdeen Labs, the open-source and experimental division of Abdeen Industries.</p>
     <nav class="foot-links" aria-label="More">
-      <a href="https://github.com/abdeen-labs/espalier">Source</a>
-      <a href="https://github.com/abdeen-labs/espalier/issues/new/choose">Report an Issue</a>
-      <a href="https://github.com/abdeen-labs/espalier/blob/main/LICENSE">MIT License</a>
+      <a href="https://github.com/abdeen-labs/espalier" data-event="github" data-event-location="footer">Source</a>
+      <a href="https://github.com/abdeen-labs/espalier/issues/new/choose" data-event="issue" data-event-location="footer">Report an Issue</a>
+      <a href="https://github.com/abdeen-labs/espalier/blob/main/LICENSE" data-event="license" data-event-location="footer">MIT License</a>
     </nav>
     <p class="fine">© {{.Year}} Abdeen Labs</p>
   </div>

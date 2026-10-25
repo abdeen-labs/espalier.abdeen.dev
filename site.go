@@ -29,6 +29,9 @@ var web embed.FS
 // link, the Open Graph image).
 const siteURL = "https://espalier.abdeen.dev"
 
+// The Umami server that counts the site's visits (web/templates/stats.html).
+const statsOrigin = "https://stats.abdeen.industries"
+
 const (
 	cacheForever = "public, max-age=31536000, immutable"
 	cacheHour    = "public, max-age=3600"
@@ -325,9 +328,10 @@ func acceptsGzip(acceptEncoding string) bool {
 	return false
 }
 
-// The page loads nothing but its own CSS and images, and runs no script.
+// The page loads its own CSS, images, and stats.js, and Umami's script from
+// the stats host, which it sends events to.
 func setSecurityHeaders(header http.Header) {
-	header.Set("Content-Security-Policy", "default-src 'none'; img-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'")
+	header.Set("Content-Security-Policy", "default-src 'none'; script-src 'self' "+statsOrigin+"; connect-src "+statsOrigin+"; img-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'")
 	header.Set("X-Content-Type-Options", "nosniff")
 	header.Set("Referrer-Policy", "strict-origin-when-cross-origin")
 	header.Set("Strict-Transport-Security", "max-age=31536000")
@@ -360,6 +364,7 @@ var contentTypes = map[string]string{
 	".html": "text/html; charset=utf-8",
 	".ico":  "image/x-icon",
 	".jpg":  "image/jpeg",
+	".js":   "text/javascript; charset=utf-8",
 	".png":  "image/png",
 	".svg":  "image/svg+xml",
 	".txt":  "text/plain; charset=utf-8",

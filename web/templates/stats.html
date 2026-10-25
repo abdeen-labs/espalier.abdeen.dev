@@ -1,0 +1,5 @@
+{{/* Umami at stats.abdeen.industries, counting visits on espalier.abdeen.dev only, with stats.js for clicks and theme picks. The data is true on the not-found page. */}}
+{{define "stats"}}
+<script defer src="https://stats.abdeen.industries/script.js" data-website-id="692592ee-efe5-4b0b-affa-4104e2cfc6e5" data-performance="true" data-domains="espalier.abdeen.dev"></script>
+<script defer src="{{asset "/static/stats.js"}}"{{if .}} data-not-found{{end}}></script>
+{{end}}

@@ -17,18 +17,22 @@ newest release. Publishing a release never redeploys the site.
 | `/robots.txt`, `/sitemap.xml`, `/favicon.ico`, `/apple-touch-icon.png` | Fixed paths, cached for an hour. |
 | `/healthz` | `200`, for the host's healthcheck. |
 
-The page runs no script and loads nothing from another host; its
-Content-Security-Policy says so. It follows the Mac's light or dark
-appearance, and the theme switcher is radio buttons and CSS. A link to the
-DMG only ever goes to the appcast's own folder on the update host, over
-HTTPS.
+The page's one other host is `stats.abdeen.industries`, the self-hosted
+Umami, and its Content-Security-Policy allows that host and nothing else.
+Umami counts page views and Web Vitals (`data-performance`), on
+`espalier.abdeen.dev` only (`data-domains`), so a local server counts
+nothing. `stats.js` sends an event for each link marked `data-event`, each
+theme picked, and each not-found page, with its `data-event-*` attributes as
+the event's data. It follows the Mac's light or dark appearance, and the
+theme switcher is radio buttons and CSS. A link to the DMG only ever goes to
+the appcast's own folder on the update host, over HTTPS.
 
 ## Layout
 
 ```
 main.go, release.go, site.go   The server: appcast reading, rendering, serving.
-web/templates/                 page.html, footer.html, icons.html (an icon sprite), notfound.html.
-web/static/                    site.css, images/ (made by scripts/images.sh), brand/ (Abdeen Labs lockups).
+web/templates/                 page.html, footer.html, icons.html (an icon sprite), notfound.html, stats.html (Umami's script tags).
+web/static/                    site.css, stats.js, images/ (made by scripts/images.sh), brand/ (Abdeen Labs lockups).
 web/root/                      Files served at fixed paths.
 scripts/images.sh              Makes the images from Espalier itself.
 ```

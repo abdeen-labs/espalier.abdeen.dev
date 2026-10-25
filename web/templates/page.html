@@ -22,6 +22,7 @@
 <meta property="og:image:alt" content="Espalier's History view showing a color-coded commit graph next to a file diff.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="{{asset "/static/site.css"}}">
+{{template "stats" false}}
 </head>
 <body>
 {{template "icons"}}
@@ -29,7 +30,7 @@
 
 <header class="top">
   <div class="top-inner">
-    <a class="brand" href="#top" aria-label="Espalier, back to top">
+    <a class="brand" href="#top" aria-label="Espalier, back to top" data-event="nav" data-event-section="top">
       <picture>
         <source media="(prefers-color-scheme: dark)" srcset="{{asset "/static/images/icon-dark-128.webp"}}">
         <img src="{{asset "/static/images/icon-light-128.webp"}}" alt="" width="30" height="30">
@@ -37,10 +38,10 @@
       <span>Espalier</span>
     </a>
     <nav aria-label="Main">
-      <a class="nav-link" href="#features">Features</a>
-      <a class="nav-link" href="#privacy">Privacy</a>
-      <a class="nav-link nav-icon" href="https://github.com/abdeen-labs/espalier" aria-label="Espalier on GitHub" title="Espalier on GitHub"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></a>
-      <a class="button button-small button-primary" href="{{.DownloadURL}}">Download</a>
+      <a class="nav-link" href="#features" data-event="nav" data-event-section="features">Features</a>
+      <a class="nav-link" href="#privacy" data-event="nav" data-event-section="privacy">Privacy</a>
+      <a class="nav-link nav-icon" href="https://github.com/abdeen-labs/espalier" aria-label="Espalier on GitHub" title="Espalier on GitHub" data-event="github" data-event-location="header"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></a>
+      <a class="button button-small button-primary" href="{{.DownloadURL}}" data-event="download" data-event-location="header"{{with .Version}} data-event-version="{{.}}"{{end}}>Download</a>
     </nav>
   </div>
 </header>
@@ -56,11 +57,11 @@
     <h1 id="hero-title">Espalier</h1>
     <p class="lede">A native Git client for the Mac. Keep track of your branches, stage individual lines, and clean up your commits before you push.</p>
     <div class="actions">
-      <a class="button button-primary button-large" href="{{.DownloadURL}}">
+      <a class="button button-primary button-large" href="{{.DownloadURL}}" data-event="download" data-event-location="hero"{{with .Version}} data-event-version="{{.}}"{{end}}>
         <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
         Download for Mac
       </a>
-      <a class="button button-secondary button-large" href="https://github.com/abdeen-labs/espalier">View Source</a>
+      <a class="button button-secondary button-large" href="https://github.com/abdeen-labs/espalier" data-event="github" data-event-location="hero">View Source</a>
     </div>
     <p class="release">{{if .HasRelease}}Version {{.Version}}{{with .Size}} · {{.}}{{end}} · {{end}}macOS {{.MacOS}}+ on Apple silicon · Free and open source</p>
   </div>
@@ -160,10 +161,10 @@
     </div>
   </div>
   <div class="themes">
-    <input class="theme-choice" type="radio" name="theme" id="theme-classic" aria-label="Classic" checked>
-    <input class="theme-choice" type="radio" name="theme" id="theme-orchard" aria-label="Orchard">
-    <input class="theme-choice" type="radio" name="theme" id="theme-islands" aria-label="Islands">
-    <input class="theme-choice" type="radio" name="theme" id="theme-pop" aria-label="Pop">
+    <input class="theme-choice" type="radio" name="theme" id="theme-classic" aria-label="Classic" data-event="theme" data-event-theme="classic" checked>
+    <input class="theme-choice" type="radio" name="theme" id="theme-orchard" aria-label="Orchard" data-event="theme" data-event-theme="orchard">
+    <input class="theme-choice" type="radio" name="theme" id="theme-islands" aria-label="Islands" data-event="theme" data-event-theme="islands">
+    <input class="theme-choice" type="radio" name="theme" id="theme-pop" aria-label="Pop" data-event="theme" data-event-theme="pop">
     <div class="wrap">
       <div class="theme-tabs" aria-hidden="true">
         <label for="theme-classic"><span class="swatch swatch-classic"></span>Classic</label>
@@ -231,10 +232,10 @@
       <h2 id="source-title">Free and open source.</h2>
       <p>An espalier is a tree trained to grow flat along a trellis, with its branches laid out so every one is easy to reach. The app started as a native Swift port of GitHub Desktop and still shares much of its underlying Git plumbing and test suite, built out into a dedicated Mac interface. It's free under the MIT license. Espalier is an independent project, not affiliated with or endorsed by GitHub.</p>
       <div class="actions">
-        <a class="button button-secondary" href="https://github.com/abdeen-labs/espalier">
+        <a class="button button-secondary" href="https://github.com/abdeen-labs/espalier" data-event="github" data-event-location="source">
           View Source
         </a>
-        <a class="button button-quiet" href="https://github.com/abdeen-labs/espalier/issues/new/choose">
+        <a class="button button-quiet" href="https://github.com/abdeen-labs/espalier/issues/new/choose" data-event="issue" data-event-location="source">
           Report an Issue
           <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
         </a>
@@ -251,7 +252,7 @@
     </picture>
     <h2 id="download-title">Download Espalier</h2>
     <p class="release">{{if .HasRelease}}Version {{.Version}}{{with .Published}}, {{.}}{{end}}{{with .Size}} · {{.}}{{end}}{{else}}The latest version{{end}}</p>
-    <a class="button button-primary button-large" href="{{.DownloadURL}}">
+    <a class="button button-primary button-large" href="{{.DownloadURL}}" data-event="download" data-event-location="closing"{{with .Version}} data-event-version="{{.}}"{{end}}>
       <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
       Download for Mac
     </a>
