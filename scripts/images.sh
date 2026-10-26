@@ -72,11 +72,11 @@ magick "$work/icon-Default.png" -define icon:auto-resize=48,32,16 -strip "$root/
 bold=/Library/Fonts/SF-Pro-Display-Bold.otf
 regular=/Library/Fonts/SF-Pro-Display-Regular.otf
 [[ -f "$bold" && -f "$regular" ]] || bold=/System/Library/Fonts/Helvetica.ttc regular=/System/Library/Fonts/Helvetica.ttc
-magick -size 1200x630 xc:'#090f1b' \
+magick -size 1200x630 xc:'#110c19' \
   \( "$work/classic/classic/Showcase/history-dark.png" -resize 1040x \) -geometry +80+250 -composite \
   \( "$work/icon-Dark.png" -resize 132x132 \) -geometry +80+64 -composite \
-  -font "$bold" -pointsize 64 -fill '#f5f9ff' -annotate +238+138 'Espalier' \
-  -font "$regular" -pointsize 28 -fill '#b0bbcf' -annotate +240+184 'A native Git client for the Mac' \
+  -font "$bold" -pointsize 64 -fill '#f9f7fe' -annotate +238+138 'Espalier' \
+  -font "$regular" -pointsize 28 -fill '#beb6ce' -annotate +240+184 'A native Git client for the Mac' \
   -quality 86 -sampling-factor 4:2:0 -strip "$out/og.jpg"
 
 echo "Wrote $(ls "$out" | wc -l | tr -d ' ') images to web/static/images"

@@ -1,28 +1,29 @@
-/* espalier.abdeen.dev. Neutrals come from Abdeen Labs' navy ramp, the accent
-   from Espalier's icon: its leaf green. Light or dark follows the Mac. */
+/* espalier.abdeen.dev. Colors come from Espalier's icon: neutrals tinted with
+   its lilac and amethyst, buttons in its tree's violet, the accent and glows
+   from its fruit. Light or dark follows the Mac. */
 
 :root {
   color-scheme: light dark;
-  --bg: #f7f9fc;
+  --bg: #f9f8fe;
   --bg-raised: #ffffff;
-  --bg-sunken: #eef2f8;
-  --ink: #090f1b;
-  --ink-2: #3a4763;
-  --ink-3: #5c6880;
-  --hairline: rgb(9 15 27 / 0.09);
-  --hairline-strong: rgb(9 15 27 / 0.16);
-  --accent: #19774a;
-  --accent-soft: rgb(25 119 74 / 0.1);
-  --leaf: #6fd39a;
-  --button: #111827;
-  --button-hover: #222d44;
-  --button-ink: #f5f9ff;
+  --bg-sunken: #f3f0fa;
+  --ink: #110c19;
+  --ink-2: #4b415f;
+  --ink-3: #6b637c;
+  --hairline: rgb(17 12 25 / 0.09);
+  --hairline-strong: rgb(17 12 25 / 0.16);
+  --accent: #6c3ccd;
+  --accent-soft: rgb(108 60 205 / 0.1);
+  --fruit: #c996ff;
+  --button: #24145c;
+  --button-hover: #3a2380;
+  --button-ink: #f9f7fe;
   /* What the app's screenshots sit on: its list background. */
   --app-surface: #ffffff;
-  --shadow-window: 0 1px 2px rgb(9 15 27 / 0.06), 0 14px 34px -10px rgb(9 15 27 / 0.2), 0 48px 110px -28px rgb(9 15 27 / 0.32);
-  --shadow-card: 0 1px 2px rgb(9 15 27 / 0.04), 0 18px 44px -26px rgb(9 15 27 / 0.28);
-  --glow-a: rgb(111 211 154 / 0.3);
-  --glow-b: rgb(86 170 214 / 0.2);
+  --shadow-window: 0 1px 2px rgb(17 12 25 / 0.06), 0 14px 34px -10px rgb(17 12 25 / 0.2), 0 48px 110px -28px rgb(17 12 25 / 0.32);
+  --shadow-card: 0 1px 2px rgb(17 12 25 / 0.04), 0 18px 44px -26px rgb(17 12 25 / 0.28);
+  --glow-a: rgb(180 140 255 / 0.3);
+  --glow-b: rgb(121 136 237 / 0.18);
   --classic: #0064e1;
   --frost: #5b43e8;
   --islands: #0a6f80;
@@ -37,24 +38,24 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #090f1b;
-    --bg-raised: #111827;
-    --bg-sunken: #0d1422;
-    --ink: #f5f9ff;
-    --ink-2: #c1cbdd;
-    --ink-3: #8d98ae;
-    --hairline: rgb(245 249 255 / 0.08);
-    --hairline-strong: rgb(245 249 255 / 0.15);
-    --accent: #7ddba6;
-    --accent-soft: rgb(125 219 166 / 0.12);
-    --button: #7ddba6;
-    --button-hover: #98e6ba;
-    --button-ink: #06120c;
+    --bg: #110c19;
+    --bg-raised: #1b1525;
+    --bg-sunken: #161120;
+    --ink: #f9f7fe;
+    --ink-2: #cdc7da;
+    --ink-3: #9b93ab;
+    --hairline: rgb(249 247 254 / 0.08);
+    --hairline-strong: rgb(249 247 254 / 0.15);
+    --accent: #c996ff;
+    --accent-soft: rgb(201 150 255 / 0.12);
+    --button: #c996ff;
+    --button-hover: #d6b0ff;
+    --button-ink: #0f0a18;
     --app-surface: #1a1a1d;
-    --shadow-window: 0 0 0 1px rgb(245 249 255 / 0.05), 0 24px 60px -14px rgb(0 0 0 / 0.7), 0 70px 140px -40px rgb(0 0 0 / 0.6);
+    --shadow-window: 0 0 0 1px rgb(249 247 254 / 0.05), 0 24px 60px -14px rgb(0 0 0 / 0.7), 0 70px 140px -40px rgb(0 0 0 / 0.6);
     --shadow-card: 0 20px 50px -28px rgb(0 0 0 / 0.7);
-    --glow-a: rgb(111 211 154 / 0.16);
-    --glow-b: rgb(70 140 230 / 0.16);
+    --glow-a: rgb(180 140 255 / 0.16);
+    --glow-b: rgb(121 136 237 / 0.14);
     --classic: #007aff;
     --frost: #8b7cf6;
     --islands: #1494a8;
@@ -135,8 +136,8 @@ kbd {
 }
 
 ::selection {
-  background: var(--leaf);
-  color: #090f1b;
+  background: var(--fruit);
+  color: #110c19;
 }
 
 :focus-visible {
@@ -316,7 +317,7 @@ kbd {
 .button-primary {
   background: var(--button);
   color: var(--button-ink);
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.1), 0 8px 20px -8px rgb(9 15 27 / 0.45);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.1), 0 8px 20px -8px rgb(17 12 25 / 0.45);
 }
 
 .button-primary:hover {
@@ -326,11 +327,11 @@ kbd {
 .button-secondary {
   background: var(--bg-raised);
   color: var(--ink);
-  box-shadow: inset 0 0 0 1px var(--hairline-strong), 0 1px 2px rgb(9 15 27 / 0.05);
+  box-shadow: inset 0 0 0 1px var(--hairline-strong), 0 1px 2px rgb(17 12 25 / 0.05);
 }
 
 .button-secondary:hover {
-  box-shadow: inset 0 0 0 1px var(--ink-3), 0 1px 2px rgb(9 15 27 / 0.05);
+  box-shadow: inset 0 0 0 1px var(--ink-3), 0 1px 2px rgb(17 12 25 / 0.05);
 }
 
 .button-quiet {
@@ -394,7 +395,7 @@ kbd {
 
 .hero-icon img {
   width: clamp(96px, 13vw, 128px);
-  filter: drop-shadow(0 20px 28px rgb(9 15 27 / 0.26));
+  filter: drop-shadow(0 20px 28px rgb(17 12 25 / 0.26));
 }
 
 .hero h1 {
@@ -771,7 +772,7 @@ kbd {
 #theme-pop:checked ~ .wrap label[for="theme-pop"] {
   background: var(--bg-raised);
   color: var(--ink);
-  box-shadow: 0 0 0 1px var(--hairline), 0 2px 6px rgb(9 15 27 / 0.1);
+  box-shadow: 0 0 0 1px var(--hairline), 0 2px 6px rgb(17 12 25 / 0.1);
 }
 
 #theme-classic:focus-visible ~ .wrap label[for="theme-classic"],
@@ -963,7 +964,7 @@ kbd {
 
 .download-icon img {
   width: 88px;
-  filter: drop-shadow(0 16px 24px rgb(9 15 27 / 0.24));
+  filter: drop-shadow(0 16px 24px rgb(17 12 25 / 0.24));
 }
 
 .download h2 {
