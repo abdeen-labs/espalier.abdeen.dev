@@ -162,20 +162,20 @@
   </div>
   <div class="themes">
     <input class="theme-choice" type="radio" name="theme" id="theme-classic" aria-label="Classic" data-event="theme" data-event-theme="classic" checked>
-    <input class="theme-choice" type="radio" name="theme" id="theme-orchard" aria-label="Orchard" data-event="theme" data-event-theme="orchard">
+    <input class="theme-choice" type="radio" name="theme" id="theme-frost" aria-label="Frost" data-event="theme" data-event-theme="frost">
     <input class="theme-choice" type="radio" name="theme" id="theme-islands" aria-label="Islands" data-event="theme" data-event-theme="islands">
     <input class="theme-choice" type="radio" name="theme" id="theme-pop" aria-label="Pop" data-event="theme" data-event-theme="pop">
     <div class="wrap">
       <div class="theme-tabs" aria-hidden="true">
         <label for="theme-classic"><span class="swatch swatch-classic"></span>Classic</label>
-        <label for="theme-orchard"><span class="swatch swatch-orchard"></span>Orchard</label>
+        <label for="theme-frost"><span class="swatch swatch-frost"></span>Frost</label>
         <label for="theme-islands"><span class="swatch swatch-islands"></span>Islands</label>
         <label for="theme-pop"><span class="swatch swatch-pop"></span>Pop</label>
       </div>
     </div>
     <figure class="wrap wrap-wide theme-shots">
       <div class="window theme-window">
-        {{range $theme := list "classic" "orchard" "islands" "pop"}}
+        {{range $theme := list "classic" "frost" "islands" "pop"}}
         <picture class="theme-shot theme-shot-{{$theme}}">
           <source media="(prefers-color-scheme: dark)" srcset="{{srcset (print $theme "-dark") 1440 2880}}" sizes="(min-width: 1320px) 1280px, calc(100vw - 32px)">
           <img src="{{asset (print "/static/images/" $theme "-light-1440.webp")}}" srcset="{{srcset (print $theme "-light") 1440 2880}}" sizes="(min-width: 1320px) 1280px, calc(100vw - 32px)" width="1440" height="900" loading="lazy" decoding="async" alt="{{themeAlt $theme}}">
@@ -183,7 +183,7 @@
         {{end}}
       </div>
       <figcaption class="theme-captions">
-        {{range $theme := list "classic" "orchard" "islands" "pop"}}
+        {{range $theme := list "classic" "frost" "islands" "pop"}}
         <span class="theme-shot theme-shot-{{$theme}}">{{themeCaption $theme}}</span>
         {{end}}
       </figcaption>

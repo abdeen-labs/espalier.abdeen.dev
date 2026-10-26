@@ -345,9 +345,9 @@ var themes = map[string]struct{ caption, alt string }{
 		caption: "Crisp and standard, using your Mac's system accent color.",
 		alt:     "Espalier's History view in the Classic theme with a blue accent.",
 	},
-	"orchard": {
-		caption: "Warm paper and stone tones instead of standard gray. Shown in Clay.",
-		alt:     "Espalier's History view in the Orchard theme (Clay), with warm paper tones and a terracotta accent.",
+	"frost": {
+		caption: "Quiet near-white and near-black, with glass around one inset card. Shown in Iris.",
+		alt:     "Espalier's History view in the Frost theme (Iris), with near-neutral surfaces around one inset card and a blue-violet accent.",
 	},
 	"islands": {
 		caption: "Floating card panes over a softer background. Shown in Lagoon.",

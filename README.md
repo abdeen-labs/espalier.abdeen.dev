@@ -50,7 +50,7 @@ Edits to `web/` show after a restart: the files are built into the binary.
 
 The screenshots are Espalier's own windows, drawn by its Showcase captures
 (`Packages/EspalierKit/Tests/EspalierCaptures/Showcase` in the Espalier
-repository) on a demo project, in Classic, Orchard, Islands, and Pop, light
+repository) on a demo project, in Classic, Frost, Islands, and Pop, light
 and dark. The icon comes from Espalier's Icon Composer file. To make them
 again after Espalier's look changes:
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 # Makes the page's images from Espalier itself: the window screenshots from
 # Espalier's Showcase captures (History and Changes in Classic, History in
-# Orchard, Islands, and Pop, each light and dark), the app icon from its
+# Frost, Islands, and Pop, each light and dark), the app icon from its
 # Icon Composer file, and the favicons and sharing image from those.
 #
 #   scripts/images.sh
@@ -36,7 +36,7 @@ webp() {
 }
 
 # Classic's looks first: History and Changes, and a close-up of the graph.
-looks=(classic orchard-clay islands-lagoon pop-magenta)
+looks=(classic frost-iris islands-lagoon pop-magenta)
 for look in "${looks[@]}"; do
   "$espalier/scripts/capture.sh" --look "$look" --out "$work/$look" ShowcaseCaptures >/dev/null
   theme="${look%%-*}"

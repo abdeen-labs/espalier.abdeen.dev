@@ -24,7 +24,7 @@
   --glow-a: rgb(111 211 154 / 0.3);
   --glow-b: rgb(86 170 214 / 0.2);
   --classic: #0064e1;
-  --orchard: #a84825;
+  --frost: #5b43e8;
   --islands: #0a6f80;
   --pop: #c2247e;
   --radius-window: 18px;
@@ -56,7 +56,7 @@
     --glow-a: rgb(111 211 154 / 0.16);
     --glow-b: rgb(70 140 230 / 0.16);
     --classic: #007aff;
-    --orchard: #c2603a;
+    --frost: #8b7cf6;
     --islands: #1494a8;
     --pop: #e0389a;
   }
@@ -761,12 +761,12 @@ kbd {
 }
 
 .swatch-classic { background: var(--classic); }
-.swatch-orchard { background: var(--orchard); }
+.swatch-frost { background: var(--frost); }
 .swatch-islands { background: var(--islands); }
 .swatch-pop { background: var(--pop); }
 
 #theme-classic:checked ~ .wrap label[for="theme-classic"],
-#theme-orchard:checked ~ .wrap label[for="theme-orchard"],
+#theme-frost:checked ~ .wrap label[for="theme-frost"],
 #theme-islands:checked ~ .wrap label[for="theme-islands"],
 #theme-pop:checked ~ .wrap label[for="theme-pop"] {
   background: var(--bg-raised);
@@ -775,7 +775,7 @@ kbd {
 }
 
 #theme-classic:focus-visible ~ .wrap label[for="theme-classic"],
-#theme-orchard:focus-visible ~ .wrap label[for="theme-orchard"],
+#theme-frost:focus-visible ~ .wrap label[for="theme-frost"],
 #theme-islands:focus-visible ~ .wrap label[for="theme-islands"],
 #theme-pop:focus-visible ~ .wrap label[for="theme-pop"] {
   outline: 2px solid var(--accent);
@@ -804,7 +804,7 @@ kbd {
 }
 
 #theme-classic:checked ~ .theme-shots .theme-shot-classic,
-#theme-orchard:checked ~ .theme-shots .theme-shot-orchard,
+#theme-frost:checked ~ .theme-shots .theme-shot-frost,
 #theme-islands:checked ~ .theme-shots .theme-shot-islands,
 #theme-pop:checked ~ .theme-shots .theme-shot-pop {
   z-index: 1;
@@ -1087,7 +1087,7 @@ kbd {
   }
 
   #theme-classic:checked ~ .theme-shots .theme-shot-classic,
-  #theme-orchard:checked ~ .theme-shots .theme-shot-orchard,
+  #theme-frost:checked ~ .theme-shots .theme-shot-frost,
   #theme-islands:checked ~ .theme-shots .theme-shot-islands,
   #theme-pop:checked ~ .theme-shots .theme-shot-pop {
     transition: opacity 0.3s var(--ease);
