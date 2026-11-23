@@ -341,21 +341,13 @@ func setSecurityHeaders(header http.Header) {
 
 // themes describes the page's screenshot of each of Espalier's themes.
 var themes = map[string]struct{ caption, alt string }{
-	"classic": {
-		caption: "Crisp and standard, using your Mac's system accent color.",
-		alt:     "Espalier's History view in the Classic theme with a blue accent.",
-	},
-	"frost": {
+	"default": {
 		caption: "Quiet near-white and near-black, with glass around one inset card. Shown in Iris.",
-		alt:     "Espalier's History view in the Frost theme (Iris), with near-neutral surfaces around one inset card and a blue-violet accent.",
+		alt:     "Espalier's History view in the Default theme (Iris), with near-neutral surfaces around one inset card and a blue-violet accent.",
 	},
 	"islands": {
 		caption: "Floating card panes over a softer background. Shown in Lagoon.",
 		alt:     "Espalier's History view in the Islands theme (Lagoon), with floating card panes and a teal accent.",
-	},
-	"pop": {
-		caption: "High-contrast with a full-color sidebar. Shown in Magenta.",
-		alt:     "Espalier's History view in the Pop theme (Magenta), with a pink-tinted sidebar and magenta accent.",
 	},
 }
 

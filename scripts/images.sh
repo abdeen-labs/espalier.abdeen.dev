@@ -1,8 +1,8 @@
 #!/bin/bash
 # Makes the page's images from Espalier itself: the window screenshots from
-# Espalier's Showcase captures (History and Changes in Classic, History in
-# Frost, Islands, and Pop, each light and dark), the app icon from its
-# Icon Composer file, and the favicons and sharing image from those.
+# Espalier's Showcase captures (History and Changes in Default, History in
+# Islands, each light and dark), the app icon from its Icon Composer file,
+# and the favicons and sharing image from those.
 #
 #   scripts/images.sh
 #
@@ -35,15 +35,15 @@ webp() {
   done
 }
 
-# Classic's looks first: History and Changes, and a close-up of the graph.
-looks=(classic frost-iris islands-lagoon pop-magenta)
+# Default's looks first: History and Changes, and a close-up of the graph.
+looks=(default islands-lagoon)
 for look in "${looks[@]}"; do
   "$espalier/scripts/capture.sh" --look "$look" --out "$work/$look" ShowcaseCaptures >/dev/null
   theme="${look%%-*}"
   for appearance in light dark; do
     shots="$work/$look/$look/Showcase"
     webp "$shots/history-$appearance.png" "$theme-$appearance"
-    if [[ "$look" == classic ]]; then
+    if [[ "$look" == default ]]; then
       webp "$shots/changes-$appearance.png" "changes-$appearance"
       # The commit list and its graph, from the toolbar's row down.
       magick "$shots/history-$appearance.png" -crop 840x1070+482+110 +repage "$work/graph-$appearance.png"
@@ -73,7 +73,7 @@ bold=/Library/Fonts/SF-Pro-Display-Bold.otf
 regular=/Library/Fonts/SF-Pro-Display-Regular.otf
 [[ -f "$bold" && -f "$regular" ]] || bold=/System/Library/Fonts/Helvetica.ttc regular=/System/Library/Fonts/Helvetica.ttc
 magick -size 1200x630 xc:'#110c19' \
-  \( "$work/classic/classic/Showcase/history-dark.png" -resize 1040x \) -geometry +80+250 -composite \
+  \( "$work/default/default/Showcase/history-dark.png" -resize 1040x \) -geometry +80+250 -composite \
   \( "$work/icon-Dark.png" -resize 132x132 \) -geometry +80+64 -composite \
   -font "$bold" -pointsize 64 -fill '#f9f7fe' -annotate +238+138 'Espalier' \
   -font "$regular" -pointsize 28 -fill '#beb6ce' -annotate +240+184 'A native Git client for the Mac' \

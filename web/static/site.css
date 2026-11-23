@@ -24,10 +24,8 @@
   --shadow-card: 0 1px 2px rgb(17 12 25 / 0.04), 0 18px 44px -26px rgb(17 12 25 / 0.28);
   --glow-a: rgb(180 140 255 / 0.3);
   --glow-b: rgb(121 136 237 / 0.18);
-  --classic: #0064e1;
-  --frost: #5b43e8;
+  --default: #5b43e8;
   --islands: #0a6f80;
-  --pop: #c2247e;
   --radius-window: 18px;
   --radius-card: 22px;
   --gutter: 16px;
@@ -56,10 +54,8 @@
     --shadow-card: 0 20px 50px -28px rgb(0 0 0 / 0.7);
     --glow-a: rgb(180 140 255 / 0.16);
     --glow-b: rgb(121 136 237 / 0.14);
-    --classic: #007aff;
-    --frost: #8b7cf6;
+    --default: #8b7cf6;
     --islands: #1494a8;
-    --pop: #e0389a;
   }
 }
 
@@ -742,7 +738,7 @@ kbd {
   border-radius: 50%;
 }
 
-/* On a phone the four fit side by side, a little tighter. */
+/* On a phone the tabs are a little tighter. */
 @media (max-width: 480px) {
   .theme-tabs {
     gap: 2px;
@@ -761,29 +757,23 @@ kbd {
   }
 }
 
-.swatch-classic { background: var(--classic); }
-.swatch-frost { background: var(--frost); }
+.swatch-default { background: var(--default); }
 .swatch-islands { background: var(--islands); }
-.swatch-pop { background: var(--pop); }
 
-#theme-classic:checked ~ .wrap label[for="theme-classic"],
-#theme-frost:checked ~ .wrap label[for="theme-frost"],
-#theme-islands:checked ~ .wrap label[for="theme-islands"],
-#theme-pop:checked ~ .wrap label[for="theme-pop"] {
+#theme-default:checked ~ .wrap label[for="theme-default"],
+#theme-islands:checked ~ .wrap label[for="theme-islands"] {
   background: var(--bg-raised);
   color: var(--ink);
   box-shadow: 0 0 0 1px var(--hairline), 0 2px 6px rgb(17 12 25 / 0.1);
 }
 
-#theme-classic:focus-visible ~ .wrap label[for="theme-classic"],
-#theme-frost:focus-visible ~ .wrap label[for="theme-frost"],
-#theme-islands:focus-visible ~ .wrap label[for="theme-islands"],
-#theme-pop:focus-visible ~ .wrap label[for="theme-pop"] {
+#theme-default:focus-visible ~ .wrap label[for="theme-default"],
+#theme-islands:focus-visible ~ .wrap label[for="theme-islands"] {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
-/* One window holds the four screenshots, stacked, and one caption holds
+/* One window holds the screenshots, stacked, and one caption holds
    their captions. Hidden ones stay laid out, so each screenshot loads as the
    section nears the screen, before it's picked. */
 .theme-window,
@@ -804,10 +794,8 @@ kbd {
   visibility: hidden;
 }
 
-#theme-classic:checked ~ .theme-shots .theme-shot-classic,
-#theme-frost:checked ~ .theme-shots .theme-shot-frost,
-#theme-islands:checked ~ .theme-shots .theme-shot-islands,
-#theme-pop:checked ~ .theme-shots .theme-shot-pop {
+#theme-default:checked ~ .theme-shots .theme-shot-default,
+#theme-islands:checked ~ .theme-shots .theme-shot-islands {
   z-index: 1;
   opacity: 1;
   visibility: visible;
@@ -1117,10 +1105,8 @@ kbd {
     transition: opacity 0s 0.3s, visibility 0s 0.3s;
   }
 
-  #theme-classic:checked ~ .theme-shots .theme-shot-classic,
-  #theme-frost:checked ~ .theme-shots .theme-shot-frost,
-  #theme-islands:checked ~ .theme-shots .theme-shot-islands,
-  #theme-pop:checked ~ .theme-shots .theme-shot-pop {
+  #theme-default:checked ~ .theme-shots .theme-shot-default,
+  #theme-islands:checked ~ .theme-shots .theme-shot-islands {
     transition: opacity 0.3s var(--ease);
   }
 
