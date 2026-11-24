@@ -1,61 +1,68 @@
-/* espalier.abdeen.dev. Colors come from Espalier's icon: neutrals tinted with
-   its lilac and amethyst, buttons in its tree's violet, the accent and glows
-   from its fruit. Light or dark follows the Mac. */
+/* espalier.abdeen.dev. Colors come from Espalier's icon and its Default
+   theme: cream and oat neutrals with espresso ink (cocoa and dark roast in
+   dark), espresso buttons, and the accent and glows from the peach. Light or
+   dark follows the Mac. */
 
 :root {
   color-scheme: light dark;
-  --bg: #f9f8fe;
-  --bg-raised: #ffffff;
-  --bg-sunken: #f3f0fa;
-  --ink: #110c19;
-  --ink-2: #4b415f;
-  --ink-3: #6b637c;
-  --hairline: rgb(17 12 25 / 0.09);
-  --hairline-strong: rgb(17 12 25 / 0.16);
-  --accent: #6c3ccd;
-  --accent-soft: rgb(108 60 205 / 0.1);
-  --fruit: #c996ff;
-  --button: #24145c;
-  --button-hover: #3a2380;
-  --button-ink: #f9f7fe;
-  /* What the app's screenshots sit on: its list background. */
-  --app-surface: #ffffff;
-  --shadow-window: 0 1px 2px rgb(17 12 25 / 0.06), 0 14px 34px -10px rgb(17 12 25 / 0.2), 0 48px 110px -28px rgb(17 12 25 / 0.32);
-  --shadow-card: 0 1px 2px rgb(17 12 25 / 0.04), 0 18px 44px -26px rgb(17 12 25 / 0.28);
-  --glow-a: rgb(180 140 255 / 0.3);
-  --glow-b: rgb(121 136 237 / 0.18);
-  --default: #5b43e8;
-  --islands: #0a6f80;
+  --bg: #fbf6ec;
+  --bg-raised: #fffdf8;
+  --bg-sunken: #f4ecdd;
+  --ink: #2b2119;
+  --ink-2: #5c4d40;
+  --ink-3: #7d6d5e;
+  --hairline: rgb(43 33 25 / 0.09);
+  --hairline-strong: rgb(43 33 25 / 0.16);
+  --accent: #c24a26;
+  --accent-soft: rgb(255 127 92 / 0.14);
+  --fruit: #ffc98f;
+  --button: #2b2119;
+  --button-hover: #45362a;
+  --button-ink: #fff9ee;
+  /* What the app's screenshots sit on: Default's cards. */
+  --app-surface: #fffbf3;
+  --shadow-window: 0 1px 2px rgb(43 33 25 / 0.06), 0 14px 34px -10px rgb(43 33 25 / 0.2), 0 48px 110px -28px rgb(43 33 25 / 0.3);
+  --shadow-card: 0 1px 2px rgb(43 33 25 / 0.04), 0 18px 44px -26px rgb(43 33 25 / 0.26);
+  --glow-a: rgb(255 159 107 / 0.3);
+  --glow-b: rgb(255 94 122 / 0.14);
+  --default: #3d55d6;
+  --frost: #8a8a90;
   --radius-window: 18px;
   --radius-card: 22px;
   --gutter: 16px;
   --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  /* The petals around the hero's icon: the peach's own colors. */
+  --peach: #ff9f6b;
+  --blush: #ff5e7a;
+  --leaf: #5aa469;
+  --butter: #f4cf73;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #110c19;
-    --bg-raised: #1b1525;
-    --bg-sunken: #161120;
-    --ink: #f9f7fe;
-    --ink-2: #cdc7da;
-    --ink-3: #9b93ab;
-    --hairline: rgb(249 247 254 / 0.08);
-    --hairline-strong: rgb(249 247 254 / 0.15);
-    --accent: #c996ff;
-    --accent-soft: rgb(201 150 255 / 0.12);
-    --button: #c996ff;
-    --button-hover: #d6b0ff;
-    --button-ink: #0f0a18;
-    --app-surface: #1a1a1d;
-    --shadow-window: 0 0 0 1px rgb(249 247 254 / 0.05), 0 24px 60px -14px rgb(0 0 0 / 0.7), 0 70px 140px -40px rgb(0 0 0 / 0.6);
+    --bg: #1a1410;
+    --bg-raised: #251d17;
+    --bg-sunken: #1f1813;
+    --ink: #fff9ee;
+    --ink-2: #dacfbf;
+    --ink-3: #a99a88;
+    --hairline: rgb(255 249 238 / 0.08);
+    --hairline-strong: rgb(255 249 238 / 0.15);
+    --accent: #ffa878;
+    --accent-soft: rgb(255 168 120 / 0.13);
+    --button: #ffb686;
+    --button-hover: #ffc9a3;
+    --button-ink: #1a1410;
+    --app-surface: #2a231d;
+    --shadow-window: 0 0 0 1px rgb(255 249 238 / 0.05), 0 24px 60px -14px rgb(0 0 0 / 0.7), 0 70px 140px -40px rgb(0 0 0 / 0.6);
     --shadow-card: 0 20px 50px -28px rgb(0 0 0 / 0.7);
-    --glow-a: rgb(180 140 255 / 0.16);
-    --glow-b: rgb(121 136 237 / 0.14);
-    --default: #8b7cf6;
-    --islands: #1494a8;
+    --glow-a: rgb(255 159 107 / 0.15);
+    --glow-b: rgb(255 94 122 / 0.09);
+    --default: #7f93f5;
+    --frost: #a3a3a9;
   }
 }
 
@@ -133,7 +140,7 @@ kbd {
 
 ::selection {
   background: var(--fruit);
-  color: #110c19;
+  color: #2b2119;
 }
 
 :focus-visible {
@@ -244,6 +251,11 @@ kbd {
 .brand img {
   width: 30px;
   height: 30px;
+  transition: transform 0.35s var(--bounce);
+}
+
+.brand:hover img {
+  transform: rotate(-10deg) scale(1.08);
 }
 
 .top nav {
@@ -313,7 +325,7 @@ kbd {
 .button-primary {
   background: var(--button);
   color: var(--button-ink);
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.1), 0 8px 20px -8px rgb(17 12 25 / 0.45);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.1), 0 8px 20px -8px rgb(43 33 25 / 0.45);
 }
 
 .button-primary:hover {
@@ -323,11 +335,11 @@ kbd {
 .button-secondary {
   background: var(--bg-raised);
   color: var(--ink);
-  box-shadow: inset 0 0 0 1px var(--hairline-strong), 0 1px 2px rgb(17 12 25 / 0.05);
+  box-shadow: inset 0 0 0 1px var(--hairline-strong), 0 1px 2px rgb(43 33 25 / 0.05);
 }
 
 .button-secondary:hover {
-  box-shadow: inset 0 0 0 1px var(--ink-3), 0 1px 2px rgb(17 12 25 / 0.05);
+  box-shadow: inset 0 0 0 1px var(--ink-3), 0 1px 2px rgb(43 33 25 / 0.05);
 }
 
 .button-quiet {
@@ -389,10 +401,35 @@ kbd {
   text-align: center;
 }
 
+/* The icon, with petals and leaves scattered around it. */
+.hero-mark {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
 .hero-icon img {
   width: clamp(96px, 13vw, 128px);
-  filter: drop-shadow(0 20px 28px rgb(17 12 25 / 0.26));
+  filter: drop-shadow(0 20px 28px rgb(43 33 25 / 0.26));
+  transition: transform 0.5s var(--bounce);
 }
+
+.hero-mark:hover .hero-icon img {
+  transform: rotate(5deg) scale(1.06);
+}
+
+.petal {
+  position: absolute;
+  border-radius: 999px;
+}
+
+/* Two leaves (a leaf is a square rounded at two opposite corners) and three
+   petals. */
+.petal:nth-child(1) { top: 4%; left: -30%; width: 20px; height: 20px; border-radius: 100% 0; background: var(--leaf); rotate: -18deg; }
+.petal:nth-child(2) { top: -4%; right: -22%; width: 13px; height: 13px; background: var(--blush); }
+.petal:nth-child(3) { bottom: 14%; right: -34%; width: 16px; height: 16px; border-radius: 0 100%; background: var(--leaf); rotate: 24deg; }
+.petal:nth-child(4) { bottom: 2%; left: -20%; width: 11px; height: 11px; background: var(--peach); }
+.petal:nth-child(5) { top: -16%; left: 22%; width: 8px; height: 8px; background: var(--butter); }
 
 .hero h1 {
   margin-top: 22px;
@@ -602,6 +639,16 @@ kbd {
   background: var(--accent-soft);
 }
 
+/* A hovered row's keys go down a little, as if pressed. */
+.moves kbd {
+  display: inline-block;
+  transition: transform 0.2s var(--bounce);
+}
+
+.moves li:hover kbd {
+  transform: translateY(1.5px) scale(0.96);
+}
+
 .move-name {
   font-weight: 650;
 }
@@ -758,17 +805,17 @@ kbd {
 }
 
 .swatch-default { background: var(--default); }
-.swatch-islands { background: var(--islands); }
+.swatch-frost { background: var(--frost); }
 
 #theme-default:checked ~ .wrap label[for="theme-default"],
-#theme-islands:checked ~ .wrap label[for="theme-islands"] {
+#theme-frost:checked ~ .wrap label[for="theme-frost"] {
   background: var(--bg-raised);
   color: var(--ink);
-  box-shadow: 0 0 0 1px var(--hairline), 0 2px 6px rgb(17 12 25 / 0.1);
+  box-shadow: 0 0 0 1px var(--hairline), 0 2px 6px rgb(43 33 25 / 0.1);
 }
 
 #theme-default:focus-visible ~ .wrap label[for="theme-default"],
-#theme-islands:focus-visible ~ .wrap label[for="theme-islands"] {
+#theme-frost:focus-visible ~ .wrap label[for="theme-frost"] {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
@@ -795,7 +842,7 @@ kbd {
 }
 
 #theme-default:checked ~ .theme-shots .theme-shot-default,
-#theme-islands:checked ~ .theme-shots .theme-shot-islands {
+#theme-frost:checked ~ .theme-shots .theme-shot-frost {
   z-index: 1;
   opacity: 1;
   visibility: visible;
@@ -952,7 +999,7 @@ kbd {
 
 .download-icon img {
   width: 88px;
-  filter: drop-shadow(0 16px 24px rgb(17 12 25 / 0.24));
+  filter: drop-shadow(0 16px 24px rgb(43 33 25 / 0.24));
 }
 
 .download h2 {
@@ -1096,9 +1143,14 @@ kbd {
   color: var(--ink-2);
 }
 
-/* Motion: sections rise into place as they scroll in; a picked theme's
-   screenshot fades in over the last one, which hides once it's covered, and
-   its caption fades in as the last one goes. None of it with Reduce Motion. */
+/* Motion. All of it is transforms and opacity, and none of it runs under
+   Reduce Motion. The hero arrives on load: the icon pops in, its petals and
+   leaves scatter out and keep bobbing, and the name, words, and window rise
+   in turn. Further down, things arrive as they scroll into view: the
+   screenshots tilt up as if set down on the page, a list's rows and a
+   grid's cells come a beat apart, and the small symbols pop. A picked
+   theme's screenshot fades in over the last one, which hides once it's
+   covered, and its dot pops. */
 
 @media (prefers-reduced-motion: no-preference) {
   .theme-window .theme-shot {
@@ -1106,8 +1158,117 @@ kbd {
   }
 
   #theme-default:checked ~ .theme-shots .theme-shot-default,
-  #theme-islands:checked ~ .theme-shots .theme-shot-islands {
+  #theme-frost:checked ~ .theme-shots .theme-shot-frost {
     transition: opacity 0.3s var(--ease);
+  }
+
+  #theme-default:checked ~ .wrap label[for="theme-default"] .swatch,
+  #theme-frost:checked ~ .wrap label[for="theme-frost"] .swatch {
+    animation: swatch-pop 0.45s var(--bounce);
+  }
+
+  @keyframes swatch-pop {
+    from {
+      transform: scale(0.3);
+    }
+  }
+
+  .hero .hero-icon,
+  .missing picture {
+    display: inline-block;
+    animation: icon-pop 0.8s var(--bounce) 0.05s backwards;
+  }
+
+  .petal {
+    animation: petal-burst 0.6s var(--bounce) backwards, bob 5s ease-in-out 0.9s infinite;
+  }
+
+  .petal:nth-child(1) { animation-delay: 0.36s, 0.9s; }
+  .petal:nth-child(2) { animation-delay: 0.42s, -1.6s; }
+  .petal:nth-child(3) { animation-delay: 0.5s, 0.4s; }
+  .petal:nth-child(4) { animation-delay: 0.4s, -2.8s; }
+  .petal:nth-child(5) { animation-delay: 0.54s, -0.7s; }
+
+  .hero h1,
+  .lede,
+  .hero .actions,
+  .hero .release,
+  .hero > .wrap-wide {
+    animation: rise 0.7s var(--ease) backwards;
+  }
+
+  .hero h1 { animation-delay: 0.15s; }
+  .lede { animation-delay: 0.24s; }
+  .hero .actions { animation-delay: 0.32s; }
+  .hero .release { animation-delay: 0.38s; }
+  .hero > .wrap-wide { animation-delay: 0.3s; animation-duration: 0.9s; }
+
+  @keyframes icon-pop {
+    from {
+      opacity: 0;
+      transform: rotate(-24deg) scale(0.4);
+    }
+  }
+
+  @keyframes petal-burst {
+    from {
+      opacity: 0;
+      scale: 0;
+    }
+  }
+
+  @keyframes bob {
+    50% {
+      translate: 0 -6px;
+    }
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+  }
+
+  /* The closing peach floats. */
+  .download-icon {
+    animation: bob 4.5s ease-in-out infinite;
+  }
+
+  /* A button lifts a little under the pointer, and the download arrow
+     drops: transitions, so they ease back from wherever they are when the
+     pointer leaves. */
+  .button-primary:hover,
+  .button-secondary:hover {
+    transform: translateY(-1px);
+  }
+
+  .button:active {
+    transform: scale(0.97);
+  }
+
+  .button-primary .icon {
+    transition: transform 0.45s var(--bounce);
+  }
+
+  .button-primary:hover .icon {
+    transform: translateY(3px);
+  }
+
+  /* The Homebrew label wiggles when its row is hovered. motion.js adds
+     .wiggling on hover and takes it off when the wiggle ends, so it always
+     plays to the end, even if the pointer leaves first. */
+  .brew-label {
+    display: inline-block;
+  }
+
+  .wiggling {
+    animation: wiggle 0.5s var(--ease);
+  }
+
+  @keyframes wiggle {
+    25% { transform: rotate(-8deg); }
+    75% { transform: rotate(6deg); }
   }
 
   @supports (animation-timeline: view()) {
@@ -1117,10 +1278,84 @@ kbd {
       animation-range: entry 0% entry 36%;
     }
 
+    /* The second of a pair, and the cells after the first in a grid's row,
+       arrive a beat later. */
+    .pair > .reveal:nth-child(2),
+    .grid > .reveal:nth-child(3n + 2) {
+      animation-range: entry 8% entry 46%;
+    }
+
+    .grid > .reveal:nth-child(3n) {
+      animation-range: entry 16% entry 56%;
+    }
+
     @keyframes reveal {
       from {
         opacity: 0;
-        transform: translateY(28px);
+        transform: translateY(28px) scale(0.98);
+      }
+    }
+
+    /* Screenshots tilt up into place, as if set down on the page. */
+    .window.reveal,
+    .graph-card.reveal {
+      animation: set-down linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 30%;
+    }
+
+    @keyframes set-down {
+      from {
+        opacity: 0;
+        transform: perspective(1400px) translateY(48px) rotateX(14deg) scale(0.96);
+      }
+    }
+
+    /* A list's symbols, a panel's, and a grid cell's pop in as they arrive. */
+    .points .icon,
+    .panel-icon,
+    .grid .icon {
+      animation: pop linear both;
+      animation-timeline: view();
+      animation-range: cover 4% cover 24%;
+    }
+
+    @keyframes pop {
+      from {
+        opacity: 0;
+        transform: scale(0.5) rotate(-12deg);
+      }
+      70% {
+        transform: scale(1.08) rotate(2deg);
+      }
+    }
+
+    /* The moves come in from the side, row by row. */
+    .moves li {
+      animation: row-in linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 20%;
+    }
+
+    @keyframes row-in {
+      from {
+        opacity: 0;
+        transform: translateX(-18px);
+      }
+    }
+  }
+
+  /* The hero window, too, as the page scrolls away from the top. */
+  @supports (animation-timeline: scroll()) {
+    .hero-window {
+      animation: settle linear both;
+      animation-timeline: scroll();
+      animation-range: 0 420px;
+    }
+
+    @keyframes settle {
+      from {
+        transform: perspective(1600px) rotateX(9deg) scale(0.97);
       }
     }
   }
@@ -1134,7 +1369,10 @@ kbd {
   .button,
   .nav-link,
   .theme-tabs label,
-  .moves li {
+  .moves li,
+  .moves kbd,
+  .brand img,
+  .hero-icon img {
     transition: none;
   }
 

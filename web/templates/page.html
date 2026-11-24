@@ -7,8 +7,8 @@
 <meta name="description" content="A free, open-source Mac Git client. Read branches clearly, stage individual lines, clean up commits before you push, and handle GitHub pull requests.">
 <link rel="canonical" href="{{.SiteURL}}/">
 <meta name="color-scheme" content="light dark">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f9f8fe">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#110c19">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbf6ec">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1a1410">
 <link rel="icon" type="image/png" href="{{asset "/static/images/icon-64.png"}}">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
@@ -22,6 +22,7 @@
 <meta property="og:image:alt" content="Espalier's History view showing a color-coded commit graph next to a file diff.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="{{asset "/static/site.css"}}">
+<script defer src="{{asset "/static/motion.js"}}"></script>
 {{template "stats" false}}
 </head>
 <body>
@@ -50,10 +51,13 @@
 
 <section class="hero" aria-labelledby="hero-title">
   <div class="wrap hero-text">
-    <picture class="hero-icon">
-      <source media="(prefers-color-scheme: dark)" srcset="{{asset "/static/images/icon-dark-256.webp"}} 1x, {{asset "/static/images/icon-dark-512.webp"}} 2x">
-      <img src="{{asset "/static/images/icon-light-256.webp"}}" srcset="{{asset "/static/images/icon-light-256.webp"}} 1x, {{asset "/static/images/icon-light-512.webp"}} 2x" alt="" width="128" height="128">
-    </picture>
+    <div class="hero-mark">
+      <span class="petal" aria-hidden="true"></span><span class="petal" aria-hidden="true"></span><span class="petal" aria-hidden="true"></span><span class="petal" aria-hidden="true"></span><span class="petal" aria-hidden="true"></span>
+      <picture class="hero-icon">
+        <source media="(prefers-color-scheme: dark)" srcset="{{asset "/static/images/icon-dark-256.webp"}} 1x, {{asset "/static/images/icon-dark-512.webp"}} 2x">
+        <img src="{{asset "/static/images/icon-light-256.webp"}}" srcset="{{asset "/static/images/icon-light-256.webp"}} 1x, {{asset "/static/images/icon-light-512.webp"}} 2x" alt="" width="128" height="128">
+      </picture>
+    </div>
     <h1 id="hero-title">Espalier</h1>
     <p class="lede">A native Git client for the Mac. Keep track of your branches, stage individual lines, and clean up your commits before you push.</p>
     <div class="actions">
@@ -89,7 +93,7 @@
     <figure class="card graph-card reveal">
       <picture>
         <source media="(prefers-color-scheme: dark)" srcset="{{srcset "graph-dark" 420 840}}" sizes="(min-width: 960px) 420px, calc(100vw - 32px)">
-        <img src="{{asset "/static/images/graph-light-420.webp"}}" srcset="{{srcset "graph-light" 420 840}}" sizes="(min-width: 960px) 420px, calc(100vw - 32px)" width="420" height="535" loading="lazy" decoding="async" alt="A commit graph with main in blue-violet (tagged v1.2 and v1.3), a green widget branch merged in, and an open orange charts branch.">
+        <img src="{{asset "/static/images/graph-light-420.webp"}}" srcset="{{srcset "graph-light" 420 840}}" sizes="(min-width: 960px) 420px, calc(100vw - 32px)" width="420" height="535" loading="lazy" decoding="async" alt="A commit graph with main in blue (tagged v1.2 and v1.3), a purple widget branch merged in, and an open green charts branch.">
       </picture>
     </figure>
   </div>
@@ -157,21 +161,21 @@
   <div class="wrap">
     <div class="intro reveal">
       <h2 id="themes-title">Built to fit your setup.</h2>
-      <p>Pick from two themes and several color palettes, adjust background tints, set separate fonts for the interface and code, and run in light or dark mode.</p>
+      <p>Pick from two themes, each with its own fonts, and several color palettes, adjust background tints, and run in light or dark mode.</p>
     </div>
   </div>
   <div class="themes">
     <input class="theme-choice" type="radio" name="theme" id="theme-default" aria-label="Default" data-event="theme" data-event-theme="default" checked>
-    <input class="theme-choice" type="radio" name="theme" id="theme-islands" aria-label="Islands" data-event="theme" data-event-theme="islands">
+    <input class="theme-choice" type="radio" name="theme" id="theme-frost" aria-label="Frost" data-event="theme" data-event-theme="frost">
     <div class="wrap">
       <div class="theme-tabs" aria-hidden="true">
         <label for="theme-default"><span class="swatch swatch-default"></span>Default</label>
-        <label for="theme-islands"><span class="swatch swatch-islands"></span>Islands</label>
+        <label for="theme-frost"><span class="swatch swatch-frost"></span>Frost</label>
       </div>
     </div>
     <figure class="wrap wrap-wide theme-shots">
       <div class="window theme-window">
-        {{range $theme := list "default" "islands"}}
+        {{range $theme := list "default" "frost"}}
         <picture class="theme-shot theme-shot-{{$theme}}">
           <source media="(prefers-color-scheme: dark)" srcset="{{srcset (print $theme "-dark") 1440 2880}}" sizes="(min-width: 1320px) 1280px, calc(100vw - 32px)">
           <img src="{{asset (print "/static/images/" $theme "-light-1440.webp")}}" srcset="{{srcset (print $theme "-light") 1440 2880}}" sizes="(min-width: 1320px) 1280px, calc(100vw - 32px)" width="1440" height="900" loading="lazy" decoding="async" alt="{{themeAlt $theme}}">
@@ -179,7 +183,7 @@
         {{end}}
       </div>
       <figcaption class="theme-captions">
-        {{range $theme := list "default" "islands"}}
+        {{range $theme := list "default" "frost"}}
         <span class="theme-shot theme-shot-{{$theme}}">{{themeCaption $theme}}</span>
         {{end}}
       </figcaption>
@@ -253,7 +257,7 @@
       Download for Mac
     </a>
     <p class="requires">Requires macOS {{.MacOS}} or later on Apple silicon. Updates automatically.</p>
-    <div class="brew">
+    <div class="brew" data-wiggle=".brew-label">
       <span class="brew-label">Homebrew</span>
       <code>brew install --cask abdeen-labs/tap/espalier</code>
     </div>

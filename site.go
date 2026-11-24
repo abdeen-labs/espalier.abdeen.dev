@@ -328,7 +328,7 @@ func acceptsGzip(acceptEncoding string) bool {
 	return false
 }
 
-// The page loads its own CSS, images, and stats.js, and Umami's script from
+// The page loads its own CSS, images, stats.js, and motion.js, and Umami's script from
 // the stats host, which it sends events to.
 func setSecurityHeaders(header http.Header) {
 	header.Set("Content-Security-Policy", "default-src 'none'; script-src 'self' "+statsOrigin+"; connect-src "+statsOrigin+"; img-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'")
@@ -342,12 +342,12 @@ func setSecurityHeaders(header http.Header) {
 // themes describes the page's screenshot of each of Espalier's themes.
 var themes = map[string]struct{ caption, alt string }{
 	"default": {
-		caption: "Quiet near-white and near-black, with glass around one inset card. Shown in Iris.",
-		alt:     "Espalier's History view in the Default theme (Iris), with near-neutral surfaces around one inset card and a blue-violet accent.",
+		caption: "Playful and creamy: cream cards floating on oat, round type, and soft buttons. Shown in Blueberry.",
+		alt:     "Espalier's History view in the Default theme (Blueberry), with cream card panes floating on an oat background and a blue accent.",
 	},
-	"islands": {
-		caption: "Floating card panes over a softer background. Shown in Lagoon.",
-		alt:     "Espalier's History view in the Islands theme (Lagoon), with floating card panes and a teal accent.",
+	"frost": {
+		caption: "Quiet near-white and near-black, with glass around one inset card. Shown in Iris.",
+		alt:     "Espalier's History view in the Frost theme (Iris), with near-neutral surfaces around one inset card and a blue-violet accent.",
 	},
 }
 

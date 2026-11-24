@@ -1,7 +1,7 @@
 #!/bin/bash
 # Makes the page's images from Espalier itself: the window screenshots from
 # Espalier's Showcase captures (History and Changes in Default, History in
-# Islands, each light and dark), the app icon from its Icon Composer file,
+# Frost, each light and dark), the app icon from its Icon Composer file,
 # and the favicons and sharing image from those.
 #
 #   scripts/images.sh
@@ -36,7 +36,7 @@ webp() {
 }
 
 # Default's looks first: History and Changes, and a close-up of the graph.
-looks=(default islands-lagoon)
+looks=(default frost)
 for look in "${looks[@]}"; do
   "$espalier/scripts/capture.sh" --look "$look" --out "$work/$look" ShowcaseCaptures >/dev/null
   theme="${look%%-*}"
@@ -45,8 +45,8 @@ for look in "${looks[@]}"; do
     webp "$shots/history-$appearance.png" "$theme-$appearance"
     if [[ "$look" == default ]]; then
       webp "$shots/changes-$appearance.png" "changes-$appearance"
-      # The commit list and its graph, from the toolbar's row down.
-      magick "$shots/history-$appearance.png" -crop 840x1070+482+110 +repage "$work/graph-$appearance.png"
+      # The commit list and its graph, from inside the list's card.
+      magick "$shots/history-$appearance.png" -crop 840x1070+488+140 +repage "$work/graph-$appearance.png"
       for width in 420 840; do
         cwebp -quiet -q 84 -m 6 -sharp_yuv -resize "$width" 0 "$work/graph-$appearance.png" -o "$out/graph-$appearance-$width.webp"
       done
@@ -72,11 +72,11 @@ magick "$work/icon-Default.png" -define icon:auto-resize=48,32,16 -strip "$root/
 bold=/Library/Fonts/SF-Pro-Display-Bold.otf
 regular=/Library/Fonts/SF-Pro-Display-Regular.otf
 [[ -f "$bold" && -f "$regular" ]] || bold=/System/Library/Fonts/Helvetica.ttc regular=/System/Library/Fonts/Helvetica.ttc
-magick -size 1200x630 xc:'#110c19' \
+magick -size 1200x630 xc:'#1a1410' \
   \( "$work/default/default/Showcase/history-dark.png" -resize 1040x \) -geometry +80+250 -composite \
   \( "$work/icon-Dark.png" -resize 132x132 \) -geometry +80+64 -composite \
-  -font "$bold" -pointsize 64 -fill '#f9f7fe' -annotate +238+138 'Espalier' \
-  -font "$regular" -pointsize 28 -fill '#beb6ce' -annotate +240+184 'A native Git client for the Mac' \
+  -font "$bold" -pointsize 64 -fill '#fff9ee' -annotate +238+138 'Espalier' \
+  -font "$regular" -pointsize 28 -fill '#c9bba8' -annotate +240+184 'A native Git client for the Mac' \
   -quality 86 -sampling-factor 4:2:0 -strip "$out/og.jpg"
 
 echo "Wrote $(ls "$out" | wc -l | tr -d ' ') images to web/static/images"

@@ -32,7 +32,7 @@ the appcast's own folder on the update host, over HTTPS.
 ```
 main.go, release.go, site.go   The server: appcast reading, rendering, serving.
 web/templates/                 page.html, footer.html, icons.html (an icon sprite), notfound.html, stats.html (Umami's script tags).
-web/static/                    site.css, stats.js, images/ (made by scripts/images.sh), brand/ (Abdeen Labs lockups).
+web/static/                    site.css, stats.js, motion.js (hover wiggles that play to their end), images/ (made by scripts/images.sh), brand/ (Abdeen Labs lockups).
 web/root/                      Files served at fixed paths.
 scripts/images.sh              Makes the images from Espalier itself.
 ```
@@ -50,7 +50,7 @@ Edits to `web/` show after a restart: the files are built into the binary.
 
 The screenshots are Espalier's own windows, drawn by its Showcase captures
 (`Packages/EspalierKit/Tests/EspalierCaptures/Showcase` in the Espalier
-repository) on a demo project, in Default and Islands, light and dark. The
+repository) on a demo project, in Default and Frost, light and dark. The
 icon comes from Espalier's Icon Composer file. To make them
 again after Espalier's look changes:
 
