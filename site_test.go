@@ -155,6 +155,29 @@ func TestEveryResponseCarriesTheSecurityHeaders(t *testing.T) {
 	}
 }
 
+func TestTheTypefaceIsServedAndAllowed(t *testing.T) {
+	s := testSite(t, release)
+	path, err := s.assetPath("/static/fonts/allo.woff2")
+	if err != nil {
+		t.Fatal(err)
+	}
+	response := get(s, http.MethodGet, path, map[string]string{"Accept-Encoding": "gzip"})
+	if response.Code != http.StatusOK || response.Header().Get("Content-Type") != "font/woff2" || response.Header().Get("Content-Encoding") != "" {
+		t.Fatalf("%s: %d, %q, encoding %q", path, response.Code, response.Header().Get("Content-Type"), response.Header().Get("Content-Encoding"))
+	}
+	if !strings.Contains(response.Header().Get("Content-Security-Policy"), "font-src 'self'") {
+		t.Fatal("the Content-Security-Policy doesn't allow the page's own fonts")
+	}
+	stylesheet, err := s.assetPath("/static/site.css")
+	if err != nil {
+		t.Fatal(err)
+	}
+	css := get(s, http.MethodGet, stylesheet, nil).Body.String()
+	if !strings.Contains(css, "url("+path+")") || strings.Contains(css, "url(/static/fonts/allo.woff2)") {
+		t.Fatalf("the stylesheet doesn't name the font by its hashed path %s", path)
+	}
+}
+
 func TestAcceptsGzip(t *testing.T) {
 	for header, want := range map[string]bool{
 		"":                   false,

@@ -12,6 +12,7 @@ import (
 	"math"
 	"net/http"
 	"path"
+	"regexp"
 	"strconv"
 	"strings"
 	"sync"
@@ -92,6 +93,9 @@ func newSite(releases *releases) (*site, error) {
 	if err := s.loadFiles("web/root", "/", false); err != nil {
 		return nil, err
 	}
+	if err := s.linkStylesheets(); err != nil {
+		return nil, err
+	}
 	functions := template.FuncMap{
 		"asset":        s.assetPath,
 		"srcset":       s.srcset,
@@ -141,13 +145,51 @@ func (s *site) loadFiles(dir, prefix string, hashed bool) error {
 			s.root[plain] = a
 			return nil
 		}
-		sum := sha256.Sum256(body)
-		ext := path.Ext(plain)
-		withHash := strings.TrimSuffix(plain, ext) + "." + hex.EncodeToString(sum[:5]) + ext
-		s.hashed[plain] = withHash
-		s.static[withHash] = a
+		s.addHashed(plain, a)
 		return nil
 	})
+}
+
+// addHashed serves a at plain's path with a's content hash in its name.
+func (s *site) addHashed(plain string, a *asset) {
+	sum := sha256.Sum256(a.body)
+	ext := path.Ext(plain)
+	withHash := strings.TrimSuffix(plain, ext) + "." + hex.EncodeToString(sum[:5]) + ext
+	s.hashed[plain] = withHash
+	s.static[withHash] = a
+}
+
+// staticURL is a stylesheet's reference to another static file by its plain
+// path, like url(/static/fonts/allo.woff2).
+var staticURL = regexp.MustCompile(`url\((/static/[^)"'\s]+)\)`)
+
+// linkStylesheets points each stylesheet's url(/static/…) at that file's
+// hashed path, then hashes the stylesheet as rewritten, so a stylesheet names
+// the fonts and images it uses by their plain paths and still changes name
+// when one of them does.
+func (s *site) linkStylesheets() error {
+	for plain, withHash := range s.hashed {
+		if path.Ext(plain) != ".css" {
+			continue
+		}
+		stylesheet := s.static[withHash]
+		var missing []string
+		body := staticURL.ReplaceAllFunc(stylesheet.body, func(match []byte) []byte {
+			target := string(staticURL.FindSubmatch(match)[1])
+			hashed, ok := s.hashed[target]
+			if !ok || path.Ext(target) == ".css" {
+				missing = append(missing, target)
+				return match
+			}
+			return []byte("url(" + hashed + ")")
+		})
+		if len(missing) > 0 {
+			return fmt.Errorf("%s names files that aren't in web/static (or are stylesheets): %s", plain, strings.Join(missing, ", "))
+		}
+		delete(s.static, withHash)
+		s.addHashed(plain, newAsset(body, stylesheet.contentType))
+	}
+	return nil
 }
 
 // assetPath is the templates' asset function: a static file's hashed path.
@@ -328,10 +370,10 @@ func acceptsGzip(acceptEncoding string) bool {
 	return false
 }
 
-// The page loads its own CSS, images, stats.js, and motion.js, and Umami's script from
+// The page loads its own CSS, font, images, stats.js, and motion.js, and Umami's script from
 // the stats host, which it sends events to.
 func setSecurityHeaders(header http.Header) {
-	header.Set("Content-Security-Policy", "default-src 'none'; script-src 'self' "+statsOrigin+"; connect-src "+statsOrigin+"; img-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'")
+	header.Set("Content-Security-Policy", "default-src 'none'; script-src 'self' "+statsOrigin+"; connect-src "+statsOrigin+"; img-src 'self'; font-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'")
 	header.Set("X-Content-Type-Options", "nosniff")
 	header.Set("Referrer-Policy", "strict-origin-when-cross-origin")
 	header.Set("Strict-Transport-Security", "max-age=31536000")
@@ -352,16 +394,17 @@ var themes = map[string]struct{ caption, alt string }{
 }
 
 var contentTypes = map[string]string{
-	".css":  "text/css; charset=utf-8",
-	".html": "text/html; charset=utf-8",
-	".ico":  "image/x-icon",
-	".jpg":  "image/jpeg",
-	".js":   "text/javascript; charset=utf-8",
-	".png":  "image/png",
-	".svg":  "image/svg+xml",
-	".txt":  "text/plain; charset=utf-8",
-	".webp": "image/webp",
-	".xml":  "application/xml; charset=utf-8",
+	".css":   "text/css; charset=utf-8",
+	".html":  "text/html; charset=utf-8",
+	".ico":   "image/x-icon",
+	".jpg":   "image/jpeg",
+	".js":    "text/javascript; charset=utf-8",
+	".png":   "image/png",
+	".svg":   "image/svg+xml",
+	".txt":   "text/plain; charset=utf-8",
+	".webp":  "image/webp",
+	".woff2": "font/woff2",
+	".xml":   "application/xml; charset=utf-8",
 }
 
 func compressible(contentType string) bool {

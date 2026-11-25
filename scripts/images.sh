@@ -2,7 +2,8 @@
 # Makes the page's images from Espalier itself: the window screenshots from
 # Espalier's Showcase captures (History and Changes in Default, History in
 # Frost, each light and dark), the app icon from its Icon Composer file,
-# and the favicons and sharing image from those.
+# and the favicons and sharing image from those. The sharing image is set in
+# Allo, from the font Espalier bundles.
 #
 #   scripts/images.sh
 #
@@ -67,16 +68,10 @@ magick "$work/icon-Default.png" -resize 64x64 -strip "$out/icon-64.png"
 magick "$work/icon-Default.png" -resize 180x180 -strip "$root/web/root/apple-touch-icon.png"
 magick "$work/icon-Default.png" -define icon:auto-resize=48,32,16 -strip "$root/web/root/favicon.ico"
 
-# The sharing image: the icon and the name over History, 1200 by 630, in SF
-# Pro where it's installed.
-bold=/Library/Fonts/SF-Pro-Display-Bold.otf
-regular=/Library/Fonts/SF-Pro-Display-Regular.otf
-[[ -f "$bold" && -f "$regular" ]] || bold=/System/Library/Fonts/Helvetica.ttc regular=/System/Library/Fonts/Helvetica.ttc
-magick -size 1200x630 xc:'#1a1410' \
-  \( "$work/default/default/Showcase/history-dark.png" -resize 1040x \) -geometry +80+250 -composite \
-  \( "$work/icon-Dark.png" -resize 132x132 \) -geometry +80+64 -composite \
-  -font "$bold" -pointsize 64 -fill '#fff9ee' -annotate +238+138 'Espalier' \
-  -font "$regular" -pointsize 28 -fill '#c9bba8' -annotate +240+184 'A native Git client for the Mac' \
-  -quality 86 -sampling-factor 4:2:0 -strip "$out/og.jpg"
+# The sharing image: the icon and the name over History, 1200 by 630, in
+# Allo, from the font Espalier bundles (scripts/og.swift).
+swift "$root/scripts/og.swift" "$espalier/Packages/EspalierKit/Sources/EspalierUI/Resources/Fonts/allo/AlloVariable-Round.ttf" \
+  "$work/default/default/Showcase/history-dark.png" "$work/icon-Dark.png" "$work/og.png"
+magick "$work/og.png" -background '#1a1410' -flatten -quality 86 -sampling-factor 4:2:0 -strip "$out/og.jpg"
 
 echo "Wrote $(ls "$out" | wc -l | tr -d ' ') images to web/static/images"

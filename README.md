@@ -27,14 +27,21 @@ the event's data. It follows the Mac's light or dark appearance, and the
 theme switcher is radio buttons and CSS. A link to the DMG only ever goes to
 the appcast's own folder on the update host, over HTTPS.
 
+The page is set in Allo at its roundest, the typeface of Espalier's Default
+theme. The page serves Allo itself, cut down to what it uses
+(`scripts/font.sh`). A stylesheet names the fonts and images it uses by their
+plain `/static/` paths; the server points each at its hashed name and hashes
+the stylesheet after.
+
 ## Layout
 
 ```
 main.go, release.go, site.go   The server: appcast reading, rendering, serving.
 web/templates/                 page.html, footer.html, icons.html (an icon sprite), notfound.html, stats.html (Umami's script tags).
-web/static/                    site.css, stats.js, motion.js (hover wiggles that play to their end), images/ (made by scripts/images.sh), brand/ (Abdeen Labs lockups).
+web/static/                    site.css, stats.js, motion.js (hover wiggles that play to their end), images/ (made by scripts/images.sh), fonts/ (made by scripts/font.sh), brand/ (Abdeen Labs lockups).
 web/root/                      Files served at fixed paths.
-scripts/images.sh              Makes the images from Espalier itself.
+scripts/images.sh              Makes the images from Espalier itself; og.swift draws the sharing image for it.
+scripts/font.sh                Makes the font from the one Espalier bundles.
 ```
 
 ## Development
@@ -59,7 +66,13 @@ ESPALIER=~/Developer/Espalier scripts/images.sh
 ```
 
 It needs Xcode (for Icon Composer's `ictool`), ImageMagick, and `cwebp`
-(`brew install imagemagick webp`).
+(`brew install imagemagick webp`). The font comes from Espalier too:
+
+```sh
+ESPALIER=~/Developer/Espalier scripts/font.sh
+```
+
+It needs fonttools (`brew install fonttools`).
 
 ## Deploying
 
@@ -78,8 +91,10 @@ The first answers `200`, the second `302` to the DMG on
 
 ## Licenses
 
-The icons are from [Iconoir](https://iconoir.com), MIT License; see
-`LICENSE-THIRD-PARTY`. The GitHub mark, a link to Espalier's repository, is
+Allo is by Josh Puckett, from Inter by the Inter Project Authors, under the
+SIL Open Font License 1.1; see `LICENSE-THIRD-PARTY`. The icons are from
+[Iconoir](https://iconoir.com), MIT License; see `LICENSE-THIRD-PARTY`. The
+GitHub mark, a link to Espalier's repository, is
 GitHub's, from [Primer Octicons](https://github.com/primer/octicons), used as
 GitHub's logo guidelines allow. The Abdeen Labs lockups come from the Abdeen brand
 repository.
