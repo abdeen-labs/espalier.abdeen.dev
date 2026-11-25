@@ -46,8 +46,9 @@ for look in "${looks[@]}"; do
     webp "$shots/history-$appearance.png" "$theme-$appearance"
     if [[ "$look" == default ]]; then
       webp "$shots/changes-$appearance.png" "changes-$appearance"
-      # The commit list and its graph, from inside the list's card.
-      magick "$shots/history-$appearance.png" -crop 840x1070+488+140 +repage "$work/graph-$appearance.png"
+      # The commit list and its graph, from the top of the list's card, so
+      # the row that switches between Simple and Graph shows whole.
+      magick "$shots/history-$appearance.png" -crop 840x1070+488+106 +repage "$work/graph-$appearance.png"
       for width in 420 840; do
         cwebp -quiet -q 84 -m 6 -sharp_yuv -resize "$width" 0 "$work/graph-$appearance.png" -o "$out/graph-$appearance-$width.webp"
       done
